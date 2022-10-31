@@ -1,0 +1,72 @@
+.profile-view {
+    align-items: center;
+    gap: 2rem;
+    margin: auto;
+    width: min(100%, 400px);
+}
+
+.profile-view .core {
+    align-items: center;
+}
+
+.profile-view .username {
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.profile-view .anonymous {
+    height: 8rem;
+    width: 8rem;
+}
+
+.profile-view .connection-status {
+    align-items: center;
+    flex-direction: row !important;
+    gap: 0.3rem;
+}
+
+.profile-view .connection-status div {
+    background-color: var(--red-60);
+    border-radius: 50%;
+    height: 0.55rem;
+    margin-top: 0.1rem;
+    width: 0.55rem;
+}
+
+.profile-view .connection-status .online {
+    background-color: var(--green-50);
+}
+
+.profile-view .attributes {
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.profile-view .attributes span {
+    color: var(--gray-50) !important;
+    font-weight: 500;
+}
+
+.profile-view h3 {
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.profile-view .edit-buttons {
+    flex-direction: row !important;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+    width: 100%;
+}
+
+.profile-view .edit-buttons button {
+    border-radius: 0.6rem;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0.6rem;
+}
+
+.profile-view .edit-buttons > * {
+    width: 100%;
+}

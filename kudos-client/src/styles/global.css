@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import 'variables.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--gray-90);
+}
+
+span {
+    font-size: 15px;
+}
+
+h1, h2 {
+    font-weight: 800;
+}
+
+h1 {
+    line-height: 1.4;
+}
+
+p, a, button, label, input, textarea {
+    font-size: 15px;
+}
+
+p, textarea {
+    line-height: 1.6;
+}
+
+a {
+    color: var(--violet-40) !important;
+    text-decoration: none;
+}
+
+input[type='text'], input[type='password'], textarea {
+    background-color: var(--gray-80);
+    border: 2px solid transparent;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+input[type='text']:focus, input[type='password']:focus, textarea:focus {
+    border-color: var(--violet-50);
+}
+
+input[type='text']::placeholder, input[type='password']::placeholder, textarea::placeholder {
+    color: var(--gray-60);
+}
+
+textarea {
+    resize: none;
+}
+
+textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--gray-70);
+    border-radius: 100px;
+}
+
+button {
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: 4px solid transparent;
+    transition: background-color 0.15s;
+}
+
+button.one {
+    background-color: var(--violet-50);
+    color: var(--white) !important;
+}
+
+button.one:hover {
+    background-color: var(--violet-60);
+}
+
+button.one:active {
+    outline-color: var(--violet-90);
+}
+
+button.two {
+    background-color: var(--gray-80);
+    color: var(--violet-50) !important;
+}
+
+button.two:hover {
+    background-color: var(--gray-70);
+}
+
+button.two:active {
+    outline-color: var(--gray-80);
+}
+
+
+
+
+
+/* classes */
+
+/* error message for input validation */
+
+.validation-error {
+    color: var(--red-50) !important;
+    font-size: 0.8rem;
+}
+
+
+
+/* error box for server-related errors */
+
+.error-on-server {
+    background-color: var(--red-100);
+    border-radius: 0.8rem;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.8rem;
+}
+
+.error-on-server span {
+    align-items: center;
+    color: var(--red-50);
+    font-size: 1rem;
+    height: 1.2rem;
+    justify-content: center;
+    min-width: 1.2rem;
+}
+
+.error-on-server p {
+    color: var(--red-50);
+    margin-bottom: -0.2em;
+    margin-top: -0.2em;
+}
+
+
+
+/* button whose operation relies on the server responding if the operation succeeded or not */
+
+.button-with-spinner span {
+    color: var(--white) !important;
+}
+
+.button-with-spinner .spinner {
+    border-color: var(--white);
+    height: 1.4rem;
+    width: 1.4rem;
+
+    position: absolute;
+}
+
+.button-with-spinner .hidden {
+    visibility: hidden;
+}
+
+
+/* single property classes */
+
+.background-gray-80 {
+    background-color: var(--gray-80) !important;
+}

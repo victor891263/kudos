@@ -1,0 +1,80 @@
+#authentication  {
+    gap: 0.8rem;
+    margin: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: min(100%, 400px);
+}
+
+#authentication .heading {
+    margin-bottom: 2rem;
+}
+
+#authentication .subtitle {
+    flex-direction: row !important;
+    margin-top: 0.8rem;
+}
+
+#authentication .subtitle span {
+    margin-right: 0.3em;
+}
+
+#authentication input {
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.8rem;
+}
+
+#authentication button {
+    align-items: center;
+    border-radius: 0.6rem;
+    font-weight: 500;
+    justify-content: center;
+    padding: 0.6rem;
+    position: relative;
+}
+
+#authentication button span {
+    color: var(--white) !important;
+}
+
+#authentication .spinner {
+    border-color: var(--white);
+    height: 1.4rem;
+    width: 1.4rem;
+
+    position: absolute;
+}
+
+#authentication .hidden {
+    visibility: hidden;
+}
+
+#authentication .error-validation {
+    color: var(--red-50) !important;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+#authentication .error-server {
+    background-color: var(--red-100);
+    border-radius: 8px;
+    flex-direction: row !important;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+}
+
+#authentication .error-server span {
+    align-items: center;
+    color: var(--red-50) !important;
+    font-size: 1rem;
+    height: 1.2rem;
+    justify-content: center;
+    min-width: 1.2rem;
+}
+
+#authentication .error-server p {
+    color: var(--red-50) !important;
+    margin-bottom: -0.2em;
+    margin-top: -0.2em;
+}
