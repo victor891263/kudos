@@ -22,6 +22,15 @@ app.use(require('./middleware/error'))
 
 const httpServer = createServer(app);
 
+// error catching
+process.on("uncaughtException", error => {
+    console.log("Uncaught exception found: " + error);
+});
+
+process.on("unhandledRejection", error => {
+    console.log("Unhandled rejected promise found: " + error);
+});
+
 // SOCKET STUFF
 
 const generateToken = require('./utilities/generateToken');
@@ -42,7 +51,7 @@ const leaveGroup = require('./controllers/leaveGroup');
 
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:8080"
+        origin: "https://kudos-caca8.web.app/"
     }
 });
 
