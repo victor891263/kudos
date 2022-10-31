@@ -195,4 +195,4 @@ mongoose.connect(process.env.DATABASE_URL)
     .then(() => console.log('Connected to database'))
     .catch(error => console.log(error.message || 'Failed to connect to database'));
 
-httpServer.listen(3001);
+httpServer.listen(3003);
