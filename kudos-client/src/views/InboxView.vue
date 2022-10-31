@@ -12,7 +12,7 @@
                 </div>
                 <SearchComponent v-model="keywordToFilterChats" :placeholder="'Enter recipient to filter'" class='search' />
             </div>
-            <span class='chat-count'>{{ chats.data?.length }} chats retrieved from server.</span>
+            <span class='chat-count'>{{ chats.data?.length || '0' }} chat{{ (chats.data?.length > 1) && 's' }} retrieved from server.</span>
             <InboxChats :filterKeyword="keywordToFilterChats"/>
         </div>
         <div v-if="!currentChat" class='no-conversation-selected background-gray-80'>
