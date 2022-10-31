@@ -32,7 +32,7 @@
 
 
 <script setup lang='ts'>
-import {computed, defineProps} from 'vue'
+import {computed, defineProps, onBeforeMount, onMounted} from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { socket, currentUser, currentProfile } from '@/store/misc'
 import FullScreen from '@/components/FullScreen.vue'
@@ -81,7 +81,10 @@ function logOut() {
     router.push({ name: 'home' })
 }
 
-document.title = `${currentProfile.value.data.name} / Kudos`
+// metadata
+onBeforeMount(() => {
+    document.title = `${currentUser.value?.name} / Kudos`
+})
 </script>
 
 

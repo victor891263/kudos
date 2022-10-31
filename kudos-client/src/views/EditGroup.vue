@@ -21,7 +21,7 @@
 
 
 <script setup lang='ts'>
-import { reactive, ref } from 'vue'
+import {onBeforeMount, reactive, ref} from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Joi from 'joi'
 import { chats } from '@/store/serverResponse'
@@ -72,7 +72,10 @@ function saveChanges(newDescription: string) {
     }
 }
 
-document.title = `Edit ${group.value.name} / Kudos`
+// metadata
+onBeforeMount(() => {
+    document.title = `Edit ${group.value.name} / Kudos`
+})
 </script>
 
 

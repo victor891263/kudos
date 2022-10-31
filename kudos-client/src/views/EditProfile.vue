@@ -26,7 +26,7 @@
 
 
 <script setup lang='ts'>
-import { reactive, ref } from 'vue'
+import {onBeforeMount, reactive, ref} from 'vue'
 import { useRouter } from 'vue-router'
 import Joi from 'joi'
 import { socket } from '@/store/misc'
@@ -81,6 +81,11 @@ function saveChanges(newLink: string, newAbout: string) {
         }, () => router.push({ name: 'inbox' }), operation)
     }
 }
+
+// metadata
+onBeforeMount(() => {
+    document.title = 'Edit account / Kudos'
+})
 </script>
 
 

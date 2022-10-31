@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang='ts'>
-import {computed, reactive, ref} from 'vue'
+import {computed, onBeforeMount, reactive, ref} from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { chats } from '@/store/serverResponse'
 import { socket } from '@/store/misc'
@@ -72,7 +72,10 @@ function leaveGroup() {
     },() => router.push({ name: 'inbox' }) , operation)
 }
 
-document.title = `${group.value.name} / Kudos`
+// metadata
+onBeforeMount(() => {
+    document.title = `${group.value.name} / Kudos`
+})
 </script>
 
 <style>

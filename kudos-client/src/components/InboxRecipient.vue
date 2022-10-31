@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed } from 'vue'
+import {computed, onBeforeMount} from 'vue'
 import { useRouter } from 'vue-router'
 import { currentUser, currentChat } from '@/store/misc'
 import AnonymousComponent from '@/components/AnonymousComponent.vue'
@@ -37,7 +37,10 @@ function onPress() {
     else router.push({ name: 'inbox' })
 }
 
-document.title = `${recipient.value.name} / Kudos`
+// metadata
+onBeforeMount(() => {
+    document.title = `${recipient.value.name} / Kudos`
+})
 </script>
 
 <style>

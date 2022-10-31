@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed, reactive, ref, watch } from 'vue'
+import {computed, onBeforeMount, reactive, ref, watch} from 'vue'
 import { useRouter } from 'vue-router'
 import { groups } from '@/store/serverResponse'
 import { socket } from '@/store/misc'
@@ -90,6 +90,11 @@ function joinGroup(groupId: string) {
         errorNoRecipient.value = true
     }
 }
+
+// metadata
+onBeforeMount(() => {
+    document.title = 'Join group / Kudos'
+})
 </script>
 
 <style>

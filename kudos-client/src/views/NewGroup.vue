@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang='ts'>
-import {computed, reactive, ref, watch} from 'vue'
+import {computed, onBeforeMount, reactive, ref, watch} from 'vue'
 import { useRouter } from 'vue-router'
 import Joi from 'joi'
 import { users } from '@/store/serverResponse'
@@ -151,6 +151,11 @@ function createGroup(gpMembers: IUser[], gpName: string, gpDesc: string, msg: st
         }, () => router.push({ name: 'inbox' }), operation)
     }
 }
+
+// metadata
+onBeforeMount(() => {
+    document.title = 'New group / Kudos'
+})
 </script>
 
 <style>

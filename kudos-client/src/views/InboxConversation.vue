@@ -38,5 +38,6 @@ socket.value!.emit('client:open-chat', route.params.id, (response: IResponse<ICh
 #conversation {
     display: grid !important;
     grid-template-rows: max-content auto max-content;
+    height: 100vh;
 }
 </style>

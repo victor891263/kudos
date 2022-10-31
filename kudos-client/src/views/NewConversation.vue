@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed, reactive, ref, watch } from 'vue'
+import {computed, onBeforeMount, reactive, ref, watch} from 'vue'
 import { useRouter } from 'vue-router'
 import Joi from 'joi'
 import { users } from '@/store/serverResponse'
@@ -113,6 +113,11 @@ function createConversation(isGroup: boolean, targetUser: IUser, msg: string) {
         },() => router.push({ name: 'inbox' }) , operation)
     }
 }
+
+// metadata
+onBeforeMount(() => {
+    document.title = 'New chat / Kudos'
+})
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
     <div id='inbox' :class="{ 'current-chat-selected': currentChat, 'current-chat-not-selected': !currentChat }">
-        <div class='conversation-list'>
+        <div class='list-of-convos'>
             <div class='header'>
                 <div>
                     <InboxCurrentUser/>
@@ -12,7 +12,7 @@
                 </div>
                 <SearchComponent v-model="keywordToFilterChats" :placeholder="'Enter recipient to filter'" class='search' />
             </div>
-            <span class='chat-count'>{{ chats.data?.length || '0' }} chat{{ (chats.data?.length > 1) && 's' }} retrieved from server.</span>
+            <span class='chat-count'>{{ chats.data?.length || '0' }} chat{{ (chats.data?.length > 1) ? 's' : '' }} retrieved from server.</span>
             <InboxChats :filterKeyword="keywordToFilterChats"/>
         </div>
         <div v-if="!currentChat" class='no-conversation-selected background-gray-80'>
@@ -21,18 +21,14 @@
                 <p>Click on a conversation on the left to expand it and start messaging.</p>
             </div>
         </div>
-        <router-view v-if="chats.data" v-slot="{ Component }">
-            <Transition name='conversation'>
-                <component :is="Component" />
-            </Transition>
-        </router-view>
+        <router-view v-if="chats.data"/>
     </div>
 </template>
 
 
 <script setup lang='ts'>
 import { io } from 'socket.io-client'
-import {computed, reactive, ref, watch} from 'vue'
+import {computed, onBeforeMount, reactive, ref, watch} from 'vue'
 import { useRoute} from 'vue-router'
 import jwtDecode from 'jwt-decode'
 import { chats, messages, users, groups } from '@/store/serverResponse'
@@ -115,6 +111,11 @@ watch(() => route, (newRoute) => {
 watch(chats, (newChats) => {
     currentChat.value = newChats.data.find(chat => chat._id === currentChat.value?._id)!
 }, { deep: true })
+
+// metadata
+onBeforeMount(() => {
+    document.title = 'Inbox / Kudos'
+})
 </script>
 
 
@@ -125,11 +126,11 @@ watch(chats, (newChats) => {
     position: relative;
 }
 
-#inbox > div {
+#inbox .list-of-convos {
     height: 100vh;
 }
 
-#inbox .conversation-list {
+#inbox .list-of-convos {
     display: grid !important;
     grid-template-rows: max-content max-content auto;
 }
@@ -192,26 +193,8 @@ watch(chats, (newChats) => {
 
 
 @media (max-width: 960px) {
-    #inbox.current-chat-not-selected > div:nth-of-type(2) {
-        display: none;
-    }
-
-    #inbox.current-chat-selected > div:nth-of-type(1) {
-        display: none;
-    }
-
-
-
-    /* animations */
-
-    .conversation-enter-active, .conversation-leave-active {
-        position: absolute;
-        transition: transform 0.15s;
-        width: 100%;
-    }
-
-    .conversation-enter-from, .conversation-leave-to {
-        transform: translateX(100vw);
+    #inbox.current-chat-selected .list-of-convos {
+        display: none !important;
     }
 }
 </style>
