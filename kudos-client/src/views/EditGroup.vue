@@ -71,6 +71,8 @@ function saveChanges(newDescription: string) {
         }, () => router.push({ name: 'inbox' }), operation)
     }
 }
+
+document.title = `Edit ${group.value.name} / Kudos`
 </script>
 
 

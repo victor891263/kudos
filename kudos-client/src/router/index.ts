@@ -18,6 +18,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'home',
         component: HomeView,
+        meta: {
+            title: 'Home / Kudos'
+        },
         beforeEnter: (to, from) => {
             if (localStorage.getItem('kudos-app:token')) return { name: 'inbox' }
         }
@@ -26,6 +29,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/signup',
         name: 'signup',
         component: SignUpView,
+        meta: {
+            title: 'Sign up / Kudos'
+        },
         beforeEnter: (to, from) => {
             if (localStorage.getItem('kudos-app:token')) return { name: 'inbox' }
         }
@@ -34,6 +40,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/login',
         name: 'login',
         component: LoginView,
+        meta: {
+            title: 'Login / Kudos'
+        },
         beforeEnter: (to, from) => {
             if (localStorage.getItem('kudos-app:token')) return { name: 'inbox' }
         }
@@ -42,6 +51,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/inbox',
         name: 'inbox',
         component: InboxView,
+        meta: {
+            title: 'Inbox / Kudos'
+        },
         children: [
             {
                 name: 'conversation',
@@ -51,17 +63,26 @@ const routes: Array<RouteRecordRaw> = [
             {
                 name: 'newConversation',
                 path: 'newconversation',
-                component: NewConversation
+                component: NewConversation,
+                meta: {
+                    title: 'New chat / Kudos'
+                }
             },
             {
                 name: 'newGroup',
                 path: 'newgroup',
-                component: NewGroup
+                component: NewGroup,
+                meta: {
+                    title: 'New group / Kudos'
+                }
             },
             {
                 name: 'joinGroup',
                 path: 'joingroup',
-                component: JoinGroup
+                component: JoinGroup,
+                meta: {
+                    title: 'Join group / Kudos'
+                }
             },
             {
                 name: 'userProfile',
@@ -71,12 +92,18 @@ const routes: Array<RouteRecordRaw> = [
             {
                 name: 'account',
                 path: 'account',
-                component: AccountView
+                component: AccountView,
+                meta: {
+                    title: 'Account / Kudos'
+                }
             },
             {
                 name: 'editProfile',
                 path: 'account/edit',
-                component: EditProfile
+                component: EditProfile,
+                meta: {
+                    title: 'Edit account / Kudos'
+                }
             },
             {
                 name: 'groupProfile',

@@ -36,6 +36,8 @@ function onPress() {
     if (router.options.history.state.back) router.go(-1)
     else router.push({ name: 'inbox' })
 }
+
+document.title = `${recipient.value.name} / Kudos`
 </script>
 
 <style>

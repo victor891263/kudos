@@ -10,7 +10,8 @@ const chatSchema = new mongoose.Schema({
         type: String,
         trim: true,
         minLength: 1,
-        maxLength: 30
+        maxLength: 30,
+        unique: true
     },
     members: [{
         type: mongoose.Schema.Types.ObjectId,

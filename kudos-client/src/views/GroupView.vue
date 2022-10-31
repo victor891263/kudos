@@ -71,6 +71,8 @@ function leaveGroup() {
         socket.value!.emit('client:leave-group', groupId, onError)
     },() => router.push({ name: 'inbox' }) , operation)
 }
+
+document.title = `${group.value.name} / Kudos`
 </script>
 
 <style>

@@ -80,6 +80,8 @@ function logOut() {
     // redirect to home page
     router.push({ name: 'home' })
 }
+
+document.title = `${currentProfile.value.data.name} / Kudos`
 </script>
 
 
