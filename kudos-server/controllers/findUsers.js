@@ -2,7 +2,7 @@ const { User } = require('../models/User');
 
 module.exports = async (currentUserId) => {
     try {
-        const users = await User.find({ _id: { $ne: currentUserId } });
+        const users = await User.find({ _id: { $ne: currentUserId } }).select('-password');
         if (!users) throw new Error('Failed to retrieve users');
         return {
             data: users,
