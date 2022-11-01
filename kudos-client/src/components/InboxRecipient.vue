@@ -56,8 +56,8 @@ onBeforeMount(() => {
 }
 
 #recipient .anonymous {
-    height: 3rem;
-    width: 3rem;
+    height: 2.6rem;
+    width: 2.6rem;
 }
 
 #recipient .text {

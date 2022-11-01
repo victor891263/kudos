@@ -56,8 +56,8 @@ const isSentByMe = computed(() => props.chat.lastMsg.sentBy._id === currentUser.
 }
 
 #all-chats .each-chat .anonymous {
-    height: 3rem;
-    width: 3rem;
+    height: 3.3rem;
+    width: 3.3rem;
 }
 
 #all-chats .each-chat .text {

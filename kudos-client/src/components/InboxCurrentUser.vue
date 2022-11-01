@@ -24,7 +24,7 @@ import AnonymousComponent from '@/components/AnonymousComponent.vue'
 
 #current-user a {
     color: var(--gray-30) !important;
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: calc(var(--font-size) * 0.95);
     margin-left: 0.4rem;
 }
 </style>

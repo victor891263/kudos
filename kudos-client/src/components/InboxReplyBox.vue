@@ -51,7 +51,7 @@ function sendMsg(message: string, chatId: string) {
     background-color: transparent;
     border: none;
     font-weight: 500;
-    padding: 0.5rem 0.8rem;
+    padding: 0.6rem 0.8rem;
     width: 100%;
 }
 

@@ -147,7 +147,7 @@ watch(chats, (newChats) => {
 
 #inbox .new-buttons svg {
     fill: var(--gray-50);
-    height: 1.1rem;
+    height: 1.2rem;
 }
 
 #inbox .search {
@@ -156,7 +156,7 @@ watch(chats, (newChats) => {
 
 #inbox .chat-count {
     color: var(--gray-50);
-    font-size: calc(var(--font-size) * 0.85);
+    font-size: calc(var(--font-size) * 0.9);
     padding: 0.6rem 1rem;
 }
 
