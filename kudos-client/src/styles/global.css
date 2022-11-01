@@ -106,7 +106,7 @@ button.two:active {
 
 .validation-error {
     color: var(--red-50) !important;
-    font-size: 0.8rem;
+    font-size: calc(var(--font-size) * 0.85);
 }
 
 
@@ -123,37 +123,18 @@ button.two:active {
 
 .error-on-server span {
     align-items: center;
-    color: var(--red-50);
+    color: var(--red-50) !important;
     height: 1.2rem;
     justify-content: center;
     min-width: 1.2rem;
 }
 
 .error-on-server p {
-    color: var(--red-50);
+    color: var(--red-50) !important;
     margin-bottom: -0.2em;
     margin-top: -0.2em;
 }
 
-
-
-/* button whose operation relies on the server responding if the operation succeeded or not */
-
-.button-with-spinner span {
-    color: var(--white) !important;
-}
-
-.button-with-spinner .spinner {
-    border-color: var(--white);
-    height: 1.4rem;
-    width: 1.4rem;
-
-    position: absolute;
-}
-
-.button-with-spinner .hidden {
-    visibility: hidden;
-}
 
 
 /* single property classes */

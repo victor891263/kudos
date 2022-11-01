@@ -1,7 +1,7 @@
 <template>
     <FullScreen>
         <div id='new-conversation' class='new-window'>
-            <div v-if="operation.error" class='error-server'>
+            <div v-if="operation.error" class='error-on-server'>
                 <span>✖</span>
                 <p>Failed to send message. Reason:  {{ operation.error }}</p>
             </div>
@@ -19,7 +19,7 @@
                 </div>
                 <div v-if="!recipient">
                     <SearchComponent v-if="!recipient" v-model="keywordForUser" :placeholder="'Find your recipient'" />
-                    <span v-if="errorNoRecipient" class='error-validation'>✖ No recipient has been selected</span>
+                    <span v-if="errorNoRecipient" class='validation-error'>✖ No recipient has been selected</span>
                 </div>
                 <div v-if="keywordForUser" class='msg-targets'>
                     <div v-if="filteredUsers.length > 0">
@@ -34,12 +34,9 @@
             </div>
             <div>
                 <textarea v-model="message" placeholder="Type message here"/>
-                <span v-if="errorNoMsg" class='error-validation'>✖ {{ errorNoMsg }}</span>
+                <span v-if="errorNoMsg" class='validation-error'>✖ {{ errorNoMsg }}</span>
             </div>
-            <button @click="createConversation(false, recipient, message)" class='one'>
-                <span :class="{ hidden: operation.running }" >Create conversation</span>
-                <SpinnerComponent :class="{ hidden: !operation.running }" class='spinner' />
-            </button>
+            <ButtonWithSpinner :handleClick="() => createConversation(false, recipient, message)" :isLoading="operation.running" label="Create conversation" />
         </div>
     </FullScreen>
 </template>
@@ -51,9 +48,9 @@ import Joi from 'joi'
 import { users } from '@/store/serverResponse'
 import { socket } from '@/store/misc'
 import FullScreen from '@/components/FullScreen.vue'
+import ButtonWithSpinner from '@/components/ButtonWithSpinner.vue'
 import AnonymousComponent from '@/components/AnonymousComponent.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
-import SpinnerComponent from '@/components/SpinnerComponent.vue'
 import useSocketOperation from '@/utilities/useSocketOperation'
 import clearQuotes from '@/utilities/clearQuotes'
 import IUser from '@/types/user'

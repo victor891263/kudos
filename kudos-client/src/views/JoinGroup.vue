@@ -1,7 +1,7 @@
 <template>
     <FullScreen>
         <div id='join-group' class='new-window'>
-            <div v-if="operation.error" class='error-server'>
+            <div v-if="operation.error" class='error-on-server'>
                 <span>✖</span>
                 <p>Failed to send message. Reason:  {{ operation.error }}</p>
             </div>
@@ -19,7 +19,7 @@
                 </div>
                 <div v-if="!recipient">
                     <SearchComponent v-if="!recipient" v-model="keywordForGroup" :placeholder="'Find group to join'" />
-                    <span v-if="errorNoRecipient" class='error-validation'>✖ No recipient has been selected</span>
+                    <span v-if="errorNoRecipient" class='validation-error'>✖ No recipient has been selected</span>
                 </div>
                 <div v-if="keywordForGroup" class='msg-targets'>
                     <div v-if="filteredGroups.length > 0">
@@ -32,10 +32,7 @@
                     <span v-else>No groups found</span>
                 </div>
             </div>
-            <button @click="joinGroup(recipient?._id)" class='one'>
-                <span :class="{ hidden: operation.running }" >Join group</span>
-                <SpinnerComponent :class="{ hidden: !operation.running }" class='spinner' />
-            </button>
+            <ButtonWithSpinner :handleClick="() => joinGroup(recipient?._id)" :isLoading="operation.running" label="Join group" />
         </div>
     </FullScreen>
 </template>
@@ -46,9 +43,9 @@ import { useRouter } from 'vue-router'
 import { groups } from '@/store/serverResponse'
 import { socket } from '@/store/misc'
 import FullScreen from '@/components/FullScreen.vue'
+import ButtonWithSpinner from '@/components/ButtonWithSpinner.vue'
 import AnonymousComponent from '@/components/AnonymousComponent.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
-import SpinnerComponent from '@/components/SpinnerComponent.vue'
 import useSocketOperation from '@/utilities/useSocketOperation'
 import IGroup from '@/types/group'
 

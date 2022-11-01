@@ -61,53 +61,16 @@
     position: relative;
 }
 
-.new-window button span {
-    color: var(--white) !important;
-}
-
-.new-window .spinner {
-    border-color: var(--white);
-    height: 1.4rem;
-    width: 1.4rem;
-
-    position: absolute;
-}
-
-.new-window .hidden {
-    visibility: hidden;
-}
 
 
-
-.new-window .error-validation {
-    color: var(--red-50) !important;
-    font-size: calc(var(--font-size) * 0.85);
+.new-window .validation-error {
     margin-top: 0.3rem;
 }
 
 
 
-.new-window .error-server {
-    background-color: var(--red-100);
-    border-radius: 0.8rem;
-    flex-direction: row;
-    gap: 0.5rem;
+.new-window .error-on-server {
     margin-bottom: 1rem;
-    padding: 0.8rem;
-}
-
-.new-window .error-server span {
-    align-items: center;
-    color: var(--red-50);
-    height: 1.2rem;
-    justify-content: center;
-    min-width: 1.2rem;
-}
-
-.new-window .error-server p {
-    color: var(--red-50);
-    margin-bottom: -0.2em;
-    margin-top: -0.2em;
 }
 
 

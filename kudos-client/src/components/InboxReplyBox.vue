@@ -5,7 +5,7 @@
             <RightArrowIcon @click="sendMsg(reply, currentChat?._id)" v-if="!operation.running" class='arrow' />
             <SpinnerComponent v-if="operation.running" class='spinner' />
         </div>
-        <span v-if="operation.error" class='error'>✖ {{ operation.error }}</span>
+        <span v-if="operation.error" class='validation-error'>✖ {{ operation.error }}</span>
     </div>
 </template>
 
@@ -76,9 +76,7 @@ function sendMsg(message: string, chatId: string) {
     width: 1.4rem;
 }
 
-#reply-box .error {
-    color: var(--red-50);
-    font-size: calc(var(--font-size) * 0.85);
+#reply-box .validation-error {
     margin-top: 0.2rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <FullScreen>
         <div id='new-group' class='new-window'>
-            <div v-if="operation.error" class='error-server'>
+            <div v-if="operation.error" class='error-on-server'>
                 <span>✖</span>
                 <p>Failed to create group. Reason:  {{ operation.error }}</p>
             </div>
@@ -22,7 +22,7 @@
                     </div>
                     <div>
                         <SearchComponent v-model="keywordForUser" :placeholder="'Find user to add'" />
-                        <span v-if="errorNoMember" class='error-validation'>✖ No members had been added</span>
+                        <span v-if="errorNoMember" class='validation-error'>✖ No members had been added</span>
                     </div>
                     <div v-if="keywordForUser" class='msg-targets'>
                         <div v-if="filteredUsers.length > 0">
@@ -35,24 +35,21 @@
                         <span v-else>No users found</span>
                     </div>
                 </div>
-                <span v-if="errorMemberAlready" class='error-validation'>✖ This user has already been added</span>
+                <span v-if="errorMemberAlready" class='validation-error'>✖ This user has already been added</span>
             </div>
             <div>
                 <input v-model="groupName" type='text' placeholder='Type group name here' class='text-input' />
-                <span v-if="errorOfInputs.groupName" class='error-validation'>✖ {{ errorOfInputs.groupName }}</span>
+                <span v-if="errorOfInputs.groupName" class='validation-error'>✖ {{ errorOfInputs.groupName }}</span>
             </div>
             <div>
                 <input v-model="groupDescription" type='text' placeholder='Type group description here' class='text-input' />
-                <span v-if="errorOfInputs.groupDescription" class='error-validation'>✖ {{ errorOfInputs.groupDescription }}</span>
+                <span v-if="errorOfInputs.groupDescription" class='validation-error'>✖ {{ errorOfInputs.groupDescription }}</span>
             </div>
             <div>
                 <textarea v-model="message" placeholder="Type the first message"/>
-                <span v-if="errorOfInputs.message" class='error-validation'>✖ {{ errorOfInputs.message }}</span>
+                <span v-if="errorOfInputs.message" class='validation-error'>✖ {{ errorOfInputs.message }}</span>
             </div>
-            <button @click="createGroup(members, groupName, groupDescription, message)" class='one'>
-                <span :class="{ hidden: operation.running }" >Create group</span>
-                <SpinnerComponent :class="{ hidden: !operation.running }" class='spinner' />
-            </button>
+            <ButtonWithSpinner :handleClick="() => createGroup(members, groupName, groupDescription, message)" :isLoading="operation.running" label="Create group" />
         </div>
     </FullScreen>
 </template>
@@ -64,9 +61,9 @@ import Joi from 'joi'
 import { users } from '@/store/serverResponse'
 import { socket } from '@/store/misc'
 import FullScreen from '@/components/FullScreen.vue'
+import ButtonWithSpinner from '@/components/ButtonWithSpinner.vue'
 import AnonymousComponent from '@/components/AnonymousComponent.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
-import SpinnerComponent from '@/components/SpinnerComponent.vue'
 import useSocketOperation from '@/utilities/useSocketOperation'
 import clearQuotes from '@/utilities/clearQuotes'
 import IUser from '@/types/user'

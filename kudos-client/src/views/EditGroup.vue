@@ -1,7 +1,7 @@
 <template>
     <FullScreen>
         <div class='edit-window'>
-            <div v-if="operation.error" class='error-server'>
+            <div v-if="operation.error" class='error-on-server'>
                 <span>✖</span>
                 <p>Failed to save changes. Reason:  {{ operation.error }}</p>
             </div>
@@ -11,10 +11,7 @@
                 <textarea v-model="description" placeholder="(optional)" class='text-input'/>
                 <span v-if="errorOfInputs.description" class='validation-error'>✖ {{ errorOfInputs.description }}</span>
             </div>
-            <button @click="saveChanges(description)" class='one button-with-spinner'>
-                <span :class="{ hidden: operation.running }" >Save changes</span>
-                <SpinnerComponent :class="{ hidden: !operation.running }" class='spinner' />
-            </button>
+            <ButtonWithSpinner :handleClick="() => saveChanges(description)" :isLoading="operation.running" label="Save changes" />
         </div>
     </FullScreen>
 </template>
@@ -27,7 +24,7 @@ import Joi from 'joi'
 import { chats } from '@/store/serverResponse'
 import { socket } from '@/store/misc'
 import FullScreen from '@/components/FullScreen.vue'
-import SpinnerComponent from '@/components/SpinnerComponent.vue'
+import ButtonWithSpinner from '@/components/ButtonWithSpinner.vue'
 import clearQuotes from '@/utilities/clearQuotes'
 import useSocketOperation from '@/utilities/useSocketOperation'
 import IChat from '@/types/chat'

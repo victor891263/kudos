@@ -1,29 +1,26 @@
 <template>
-  <div id='authentication'>
-    <div v-if="operation.error" class='error-server'>
-      <span>✖</span>
-      <p>Failed to create your account. Reason: {{ operation.error }}</p>
+    <div id='authentication'>
+        <div v-if="operation.error" class='error-on-server'>
+            <span>✖</span>
+            <p>Failed to create your account. Reason: {{ operation.error }}</p>
+        </div>
+        <div class='heading'>
+            <h1>Welcome back!</h1>
+            <div class='subtitle'>
+                <span>Don't have an account?</span>
+                <router-link :to="{ name: 'signup' }">Sign up</router-link>
+            </div>
+        </div>
+        <div>
+            <input v-model='input.name' type='text' placeholder='Username' />
+            <span v-show="errors.name" class='validation-error'>⨉ {{ errors.name }}</span>
+        </div>
+        <div>
+            <input v-model='input.password' type='password' placeholder='Password' />
+            <span v-show="errors.password" class='validation-error'>⨉ {{ errors.password }}</span>
+        </div>
+        <ButtonWithSpinner :handleClick="() => submit()" :isLoading="operation.running" label="Login" />
     </div>
-    <div class='heading'>
-      <h1>Welcome back!</h1>
-      <div class='subtitle'>
-        <span>Don't have an account?</span>
-        <router-link :to="{ name: 'signup' }">Sign up</router-link>
-      </div>
-    </div>
-    <div>
-      <input v-model='input.name' type='text' placeholder='Username' />
-      <span v-show="errors.name" class='error-validation'>⨉ {{ errors.name }}</span>
-    </div>
-    <div>
-      <input v-model='input.password' type='password' placeholder='Password' />
-      <span v-show="errors.password" class='error-validation'>⨉ {{ errors.password }}</span>
-    </div>
-    <button @click="submit" class='one'>
-      <span :class="{ hidden: operation.running }" >Login</span>
-      <SpinnerComponent :class="{ hidden: !operation.running }" class='spinner' />
-    </button>
-  </div>
 </template>
 
 
@@ -32,7 +29,7 @@ import { reactive, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Joi from 'joi'
-import SpinnerComponent from '@/components/SpinnerComponent.vue'
+import ButtonWithSpinner from '@/components/ButtonWithSpinner.vue'
 import useSubmit from '@/utilities/useSubmit'
 import clearQuotes from '@/utilities/clearQuotes'
 

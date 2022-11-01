@@ -16,10 +16,7 @@
                 <textarea v-model="about" placeholder="(optional)" class='text-input'/>
                 <span v-if="errorOfInputs.about" class='validation-error'>✖ {{ errorOfInputs.about }}</span>
             </div>
-            <button @click="saveChanges(link, about)" class='one button-with-spinner'>
-                <span :class="{ hidden: operation.running }" >Save changes</span>
-                <SpinnerComponent :class="{ hidden: !operation.running }" class='spinner' />
-            </button>
+            <ButtonWithSpinner :handleClick="() => saveChanges(link, about)" :isLoading="operation.running" label="Save changes" />
         </div>
     </FullScreen>
 </template>
@@ -32,7 +29,7 @@ import Joi from 'joi'
 import { socket } from '@/store/misc'
 import { currentProfile } from '@/store/misc'
 import FullScreen from '@/components/FullScreen.vue'
-import SpinnerComponent from '@/components/SpinnerComponent.vue'
+import ButtonWithSpinner from '@/components/ButtonWithSpinner.vue'
 import useSocketOperation from '@/utilities/useSocketOperation'
 import clearQuotes from '@/utilities/clearQuotes'
 
