@@ -51,7 +51,7 @@
 
 #authentication .error-validation {
     color: var(--red-50) !important;
-    font-size: 0.9rem;
+    font-size: calc(var(--font-size) * 0.9);
     margin-top: 0.3rem;
 }
 
@@ -67,7 +67,6 @@
 #authentication .error-server span {
     align-items: center;
     color: var(--red-50) !important;
-    font-size: 1rem;
     height: 1.2rem;
     justify-content: center;
     min-width: 1.2rem;

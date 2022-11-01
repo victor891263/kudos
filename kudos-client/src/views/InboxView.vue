@@ -12,7 +12,7 @@
                 </div>
                 <SearchComponent v-model="keywordToFilterChats" :placeholder="'Enter recipient to filter'" class='search' />
             </div>
-            <span class='chat-count'>{{ chats.data?.length || '0' }} chat{{ (chats.data?.length > 1) ? 's' : '' }} retrieved from server.</span>
+            <span class='chat-count'>{{ chats.data?.length || '0' }} chat{{ (chats.data?.length > 1) ? 's' : '' }} retrieved from server</span>
             <InboxChats :filterKeyword="keywordToFilterChats"/>
         </div>
         <div v-if="!currentChat" class='no-conversation-selected background-gray-80'>
@@ -161,7 +161,7 @@ onBeforeMount(() => {
 
 #inbox .chat-count {
     color: var(--gray-50);
-    font-size: 0.8rem;
+    font-size: calc(var(--font-size) * 0.85);
     padding: 0.6rem 1rem;
 }
 
@@ -195,6 +195,10 @@ onBeforeMount(() => {
 @media (max-width: 960px) {
     #inbox.current-chat-selected .list-of-convos {
         display: none !important;
+    }
+
+    #inbox .no-conversation-selected {
+        display: none;
     }
 }
 </style>

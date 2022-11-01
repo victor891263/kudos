@@ -50,7 +50,6 @@ function sendMsg(message: string, chatId: string) {
 #reply-box input {
     background-color: transparent;
     border: none;
-    font-size: 15px;
     font-weight: 500;
     padding: 0.5rem 0.8rem;
     width: 100%;
@@ -72,14 +71,14 @@ function sendMsg(message: string, chatId: string) {
 #reply-box .spinner {
     border-color: var(--violet-50);
     flex-shrink: 0;
-    height: 1.1rem;
+    height: 1.4rem;
     margin-right: 0.8rem;
-    width: 1.1rem;
+    width: 1.4rem;
 }
 
 #reply-box .error {
     color: var(--red-50);
-    font-size: 0.8rem;
+    font-size: calc(var(--font-size) * 0.85);
     margin-top: 0.2rem;
 }
 </style>

@@ -1,4 +1,6 @@
 :root {
+    --font-size: 15px;
+
     --white: rgb(255, 255, 255);
 
     --gray-10: rgb(244, 244, 245);
@@ -27,4 +29,10 @@
     --red-50: rgb(239, 68, 68);
     --red-60: rgb(220, 38, 38);
     --red-100: rgb(61, 25, 25);
+}
+
+@media (max-width: 540px) {
+    :root {
+        --font-size: 14px;
+    }
 }

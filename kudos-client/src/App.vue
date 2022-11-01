@@ -2,6 +2,16 @@
   <router-view/>
 </template>
 
+<script setup lang='ts'>
+import {onMounted} from 'vue'
+
+onMounted(() => {
+    if (window.outerWidth < 540) {
+        document.getElementsByTagName('html')[0].style.fontSize = '15px'
+    }
+})
+</script>
+
 <style>
 #app, #app * {
   display: flex;
