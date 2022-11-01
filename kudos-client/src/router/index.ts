@@ -18,6 +18,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'home',
         component: HomeView,
+        meta: {
+            title: 'Home / Kudos'
+        },
         beforeEnter: (to, from) => {
             if (localStorage.getItem('kudos-app:token')) return { name: 'inbox' }
         }
@@ -26,6 +29,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/signup',
         name: 'signup',
         component: SignUpView,
+        meta: {
+            title: 'Sign up / Kudos'
+        },
         beforeEnter: (to, from) => {
             if (localStorage.getItem('kudos-app:token')) return { name: 'inbox' }
         }
@@ -34,6 +40,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/login',
         name: 'login',
         component: LoginView,
+        meta: {
+            title: 'Login / Kudos'
+        },
         beforeEnter: (to, from) => {
             if (localStorage.getItem('kudos-app:token')) return { name: 'inbox' }
         }
@@ -42,6 +51,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/inbox',
         name: 'inbox',
         component: InboxView,
+        meta: {
+            title: 'Inbox / Kudos'
+        },
         children: [
             {
                 name: 'conversation',
@@ -51,16 +63,25 @@ const routes: Array<RouteRecordRaw> = [
             {
                 name: 'newConversation',
                 path: 'newconversation',
+                meta: {
+                    title: 'New chat / Kudos'
+                },
                 component: NewConversation
             },
             {
                 name: 'newGroup',
                 path: 'newgroup',
+                meta: {
+                    title: 'New group / Kudos'
+                },
                 component: NewGroup
             },
             {
                 name: 'joinGroup',
                 path: 'joingroup',
+                meta: {
+                    title: 'Join group / Kudos'
+                },
                 component: JoinGroup
             },
             {
@@ -71,11 +92,17 @@ const routes: Array<RouteRecordRaw> = [
             {
                 name: 'account',
                 path: 'account',
+                meta: {
+                    title: 'Account / Kudos'
+                },
                 component: AccountView
             },
             {
                 name: 'editProfile',
                 path: 'account/edit',
+                meta: {
+                    title: 'Edit account / Kudos'
+                },
                 component: EditProfile
             },
             {
@@ -98,6 +125,12 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+    const title = to.meta.title as string
+    if (title) document.title = title
+    next()
 })
 
 export default router

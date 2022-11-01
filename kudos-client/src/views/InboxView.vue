@@ -111,11 +111,6 @@ watch(() => route, (newRoute) => {
 watch(chats, (newChats) => {
     currentChat.value = newChats.data.find(chat => chat._id === currentChat.value?._id)!
 }, { deep: true })
-
-// metadata
-onBeforeMount(() => {
-    document.title = 'Inbox / Kudos'
-})
 </script>
 
 

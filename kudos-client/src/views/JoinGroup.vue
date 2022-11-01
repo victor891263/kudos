@@ -87,11 +87,6 @@ function joinGroup(groupId: string) {
         errorNoRecipient.value = true
     }
 }
-
-// metadata
-onBeforeMount(() => {
-    document.title = 'Join group / Kudos'
-})
 </script>
 
 <style>

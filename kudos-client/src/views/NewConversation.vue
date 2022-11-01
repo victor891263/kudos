@@ -110,11 +110,6 @@ function createConversation(isGroup: boolean, targetUser: IUser, msg: string) {
         },() => router.push({ name: 'inbox' }) , operation)
     }
 }
-
-// metadata
-onBeforeMount(() => {
-    document.title = 'New chat / Kudos'
-})
 </script>
 
 <style>

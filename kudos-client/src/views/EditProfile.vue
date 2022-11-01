@@ -78,11 +78,6 @@ function saveChanges(newLink: string, newAbout: string) {
         }, () => router.push({ name: 'inbox' }), operation)
     }
 }
-
-// metadata
-onBeforeMount(() => {
-    document.title = 'Edit account / Kudos'
-})
 </script>
 
 

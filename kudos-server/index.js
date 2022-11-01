@@ -51,7 +51,7 @@ const leaveGroup = require('./controllers/leaveGroup');
 
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:8080"
+        origin: "https://kudos-caca8.web.app"
     }
 });
 

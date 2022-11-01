@@ -83,7 +83,7 @@ function logOut() {
 
 // metadata
 onBeforeMount(() => {
-    document.title = `${currentUser.value?.name} / Kudos`
+    if (!self) document.title = `${currentUser.value?.name} / Kudos`
 })
 </script>
 

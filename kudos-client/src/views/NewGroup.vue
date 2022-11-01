@@ -148,11 +148,6 @@ function createGroup(gpMembers: IUser[], gpName: string, gpDesc: string, msg: st
         }, () => router.push({ name: 'inbox' }), operation)
     }
 }
-
-// metadata
-onBeforeMount(() => {
-    document.title = 'New group / Kudos'
-})
 </script>
 
 <style>
