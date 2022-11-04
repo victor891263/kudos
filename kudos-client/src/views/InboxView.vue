@@ -118,8 +118,9 @@ function expandConversation(chatId: string) {
     }
 }
 
-watch(() => route.params.chatId, (newId) => {
+watch([() => route.name, () => route.params.chatId], ([newName, newId]) => {
     if (newId && (currentChat.value?._id !== newId)) expandConversation(newId as string)
+    if (newName === 'inbox') currentChat.value = undefined
 })
 
 watch(chats, (newChats) => {

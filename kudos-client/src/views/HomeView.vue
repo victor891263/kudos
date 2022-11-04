@@ -2,7 +2,7 @@
     <span id='floating-logo'>Kudos</span>
     <div id='home-page'>
         <h1>Connect easily with anyone, any time</h1>
-        <p>Kudos is an online chat web application that allows strangers to connect each other or create chat groups to have a conversation with like-minded individuals.</p>
+        <p>Kudos is an online chat application that allows strangers to connect each other or create chat groups to have a conversation with like-minded individuals.</p>
         <div class='buttons'>
             <button class='one'>
                 <router-link :to="{ name: 'signup' }">Sign up</router-link>

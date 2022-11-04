@@ -37,14 +37,14 @@ function sendMsg(message: string, chatId: string) {
 #reply-box > div {
     align-items: center;
     background-color: var(--gray-70) !important;
+    border: 2px solid transparent;
     border-radius: 0.7rem;
     flex-direction: row;
-    outline: 2px solid transparent;
-    transition: outline-color 0.15s;
+    transition: border-color 0.15s;
 }
 
 #reply-box > div:focus-within {
-    outline-color: var(--violet-50);
+    border-color: var(--violet-50);
 }
 
 #reply-box input {
@@ -52,7 +52,7 @@ function sendMsg(message: string, chatId: string) {
     border: none;
     font-weight: 500;
     outline: none;
-    padding: 0.7rem 0.9rem;
+    padding: 0.6rem 0.8rem;
     width: 100%;
 }
 

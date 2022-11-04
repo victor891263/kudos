@@ -21,7 +21,7 @@
             <div class='group-members'>
                 <h3>Members</h3>
                 <div>
-                    <router-link v-for="member in group.members" :to="{ name: 'userProfile', params: { id: member._id } }" v-bind:key="member._id">
+                    <router-link v-for="member in group.members" :to="{ name: 'userProfile', params: { userId: member._id } }" v-bind:key="member._id">
                         <img v-if="member.img" :src="member.img"/>
                         <AnonymousComponent v-else class='anonymous'/>
                         <span>{{ member.name }}</span>
