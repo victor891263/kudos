@@ -57,7 +57,7 @@ const operation = reactive({
 
 const router = useRouter()
 const route = useRoute()
-const groupId = route.params.id
+const groupId = route.params.groupId
 
 const group = ref<IChat>(chats.value.data.find(chat => chat._id === groupId)!)
 

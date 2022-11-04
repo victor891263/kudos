@@ -1,57 +1,82 @@
 <template>
-  <div class='main'>
-    <h1>Connect easily with anyone, any time</h1>
-    <p>Kudos is an online chat web application that allows strangers to connect each other or create chat groups to have a conversation with like-minded individuals.</p>
-    <div class='buttons'>
-      <button class='one'>
-        <router-link :to="{ name: 'signup' }">Sign up</router-link>
-      </button>
-      <button class='two'>
-        <router-link :to="{ name: 'login' }">Login</router-link>
-      </button>
+    <span id='floating-logo'>Kudos</span>
+    <div id='home-page'>
+        <h1>Connect easily with anyone, any time</h1>
+        <p>Kudos is an online chat web application that allows strangers to connect each other or create chat groups to have a conversation with like-minded individuals.</p>
+        <div class='buttons'>
+            <button class='one'>
+                <router-link :to="{ name: 'signup' }">Sign up</router-link>
+            </button>
+            <button class='two'>
+                <router-link :to="{ name: 'login' }">Login</router-link>
+            </button>
+        </div>
     </div>
-  </div>
+    <span id='copyright'>© 2022 Kudos. All rights reserved.</span>
 </template>
 
-<style scoped>
-.main {
+<style>
+#floating-logo {
+    color: var(--violet-50) !important;
+    font-weight: 800;
+
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+#home-page {
     margin: auto;
     padding-left: 1rem;
     padding-right: 1rem;
     width: min(100%, 500px);
 }
 
-h1 {
+#home-page h1 {
     margin-bottom: 1.4rem;
 }
 
-p {
-    font-size: calc(1rem + 1px);
+#home-page p {
+    font-size: calc(var(--font-size) + 1px);
 }
 
-.buttons {
+#home-page .buttons {
     display: grid !important;
     gap: 0.6rem;
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 2.2rem;
+    margin-top: 2rem;
 }
 
-button {
+#home-page button {
     border-radius: 0.6rem;
 }
 
-button a {
-    font-size: 1rem;
+#home-page button a {
     font-weight: 600;
     padding: 0.6rem;
     width: 100%;
 }
 
-button.one a {
-    color: var(--white) !important;
+#home-page button.one a {
+    color: var(--gray-10) !important;
 }
 
-button.two a {
+#home-page button.two a {
     color: var(--violet-50) !important;
+}
+
+#copyright {
+    align-self: center;
+    color: var(--gray-50) !important;
+    font-size: calc(var(--font-size) * 0.9);
+
+    position: absolute;
+    bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --font-size: 16px;
+    }
 }
 </style>

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang='ts'>
-import {computed, onMounted, ref, onUpdated} from 'vue'
+import {computed, onMounted, ref, onUpdated, watchEffect} from 'vue'
 import { messages } from '@/store/serverResponse'
 import { currentUser } from '@/store/misc'
 import calcTime from '@/utilities/calcTime'
@@ -24,11 +24,11 @@ const lastMsgTime = computed(() => {
 })
 
 function checkMsgSender(msgId: string) {
-    return messages.value.data.find(message => message._id === msgId)!.sentBy._id === currentUser.value!._id
+    return messages.value.data.find(message => message._id === msgId)?.sentBy._id === currentUser.value?._id
 }
 
-onUpdated(() => {
-    if (msgAnchor.value) msgAnchor.value.scrollIntoView()
+watchEffect(() => {
+    if (messages.value.data && msgAnchor.value) msgAnchor.value.scrollIntoView()
 })
 </script>
 

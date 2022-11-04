@@ -4,7 +4,7 @@
             <img v-if="recipient.img" :src="recipient.img" class='anonymous' />
             <AnonymousComponent v-else :is-group="recipient.isGroup" class='anonymous' />
             <div class='text'>
-                <router-link :to="{ name: routeName, params: { id: recipient._id } }" class='username'>{{ recipient.name || '' }}</router-link>
+                <router-link :to="{ name: routeName, params: recipient.isGroup ? { groupId: recipient._id } : { userId: recipient._id } }" class='username'>{{ recipient.name || '' }}</router-link>
                 <div class='connection-status'>
                     <div :class="{ online: recipient.status.isOnline }" />
                     <span>{{ recipient.status.label }}</span>
@@ -52,7 +52,7 @@ onBeforeMount(() => {
     align-items: center;
     align-self: center;
     flex-direction: row;
-    padding: 1rem;
+    padding: 0.9rem 1rem;
 }
 
 #recipient .anonymous {
@@ -86,6 +86,10 @@ onBeforeMount(() => {
 
 #recipient .connection-status .online {
     background-color: var(--green-50);
+}
+
+#recipient .connection-status span {
+    font-size: calc(var(--font-size) * 0.9);
 }
 
 #recipient .back-button {

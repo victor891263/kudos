@@ -39,3 +39,22 @@
 #authentication .error-on-server {
     margin-bottom: 1rem;
 }
+
+
+
+#floating-logo {
+    color: var(--violet-50) !important;
+    font-weight: 800;
+
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+#copyright {
+    align-self: center;
+    color: var(--gray-50) !important;
+    font-size: calc(var(--font-size) * 0.9);
+
+    position: absolute;
+    bottom: 1rem;
+}

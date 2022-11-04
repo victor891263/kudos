@@ -57,7 +57,7 @@ const routes: Array<RouteRecordRaw> = [
         children: [
             {
                 name: 'conversation',
-                path: ':id',
+                path: ':chatId',
                 component: InboxConversation
             },
             {
@@ -86,7 +86,7 @@ const routes: Array<RouteRecordRaw> = [
             },
             {
                 name: 'userProfile',
-                path: 'user/:id',
+                path: 'user/:userId',
                 component: ProfileView
             },
             {
@@ -107,12 +107,12 @@ const routes: Array<RouteRecordRaw> = [
             },
             {
                 name: 'groupProfile',
-                path: 'group/:id',
+                path: 'group/:groupId',
                 component: GroupView
             },
             {
                 name: 'editGroup',
-                path: 'group/:id/edit',
+                path: 'group/:groupId/edit',
                 component: EditGroup
             }
         ],

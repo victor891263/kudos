@@ -17,18 +17,25 @@
         </div>
         <div v-if="!currentChat" class='no-conversation-selected background-gray-80'>
             <div>
-                <h2>No chat opened</h2>
+                <span class='h2'>No chat opened</span>
                 <p>Click on a conversation on the left to expand it and start messaging.</p>
             </div>
         </div>
-        <router-view v-if="chats.data"/>
+        <router-view/>
     </div>
 </template>
 
 
 <script setup lang='ts'>
+interface IUnseen {
+    member: {
+        _id: string
+    },
+    count: number
+}
+
 import { io } from 'socket.io-client'
-import {computed, onBeforeMount, reactive, ref, watch} from 'vue'
+import {ref, watch} from 'vue'
 import { useRoute} from 'vue-router'
 import jwtDecode from 'jwt-decode'
 import { chats, messages, users, groups } from '@/store/serverResponse'
@@ -51,66 +58,75 @@ chats.value.data = undefined
 const connectionError = ref('')
 const keywordToFilterChats = ref('')
 
-const token = localStorage.getItem('kudos-app:token')
+const token = localStorage.getItem('kudos-app:token') as string
 
-currentUser.value = jwtDecode(token!)
+currentUser.value = jwtDecode(token)
 
 // Socket initialization
-socket.value = io(process.env.VUE_APP_API_URL!, { auth: { token } })
+socket.value = io(process.env.VUE_APP_API_URL as string, { auth: { token } })
 
-socket.value!.on('connect', () => console.log('client connected to server'))
-socket.value!.on('connect_error', error => connectionError.value = error.message || 'Unknown error occurred while trying to connect to the server')
+socket.value?.on('connect', () => console.log('client connected to server'))
+socket.value?.on('connect_error', error => connectionError.value = error.message || 'Unknown error occurred while trying to connect to the server')
 
-socket.value!.on('server:update-chats', () => socket.value!.emit('client:get-chats', (response: IResponse<IChat[]>) => chats.value = response))
+socket.value?.on('server:update-chats', () => socket.value?.emit('client:get-chats', (response: IResponse<IChat[]>) => chats.value = response))
 
-socket.value!.on('server:update-messages', (message: IMessage) => {
+socket.value?.on('server:update-messages', (message: IMessage) => {
     // update the lastMsg property of the conversation that the message belongs to
-    const targetChat = chats.value.data.find(chat => chat._id === message.chat!._id)!
+    const targetChat = chats.value.data?.find(chat => chat._id === message.chat?._id) as IChat
     targetChat.lastMsg = message
 
-    // if the conversation that the message belongs to is currently open, add the message to the messages array and tell the server the new message has been seen
-    if (currentChat.value?._id === message.chat!._id) {
+    if (currentChat.value?._id === message.chat?._id) {
+        // if the conversation that the message belongs to is currently open, add the message to the messages array and tell the server the new message has been seen
         messages.value.data.push(message)
-        socket.value!.emit('client:open-chat', currentChat.value?._id, (response) => console.log(response))
+        socket.value?.emit('client:open-chat', currentChat.value?._id, (response: IResponse<IChat>) => console.log(response))
+    } else {
+        // if not, increment the amount of messages user hasn't seen in that conversation
+        const unseenOfTarget = targetChat.unseen.find(item => item.member._id === currentUser.value?._id) as IUnseen
+        unseenOfTarget.count++
     }
-
-    // if the conversation that the message belongs to is currently not open, increment the amount of messages user hasn't seen in that conversation
-    else targetChat.unseen.find(item => item.member._id === currentUser.value!._id)!.count++
 
     chats.value.data = [targetChat, ...chats.value.data.filter(c => c._id !== targetChat._id)]
 })
 
-socket.value!.emit('client:get-chats', (response: IResponse<IChat[]>) => chats.value = response)
-socket.value!.emit('client:get-users', (response: IResponse<IUser[]>) => users.value = response)
-socket.value!.emit('client:get-groups', (response: IResponse<IGroup[]>) => groups.value = response)
+socket.value?.emit('client:get-chats', (response: IResponse<IChat[]>) => chats.value = response)
+socket.value?.emit('client:get-users', (response: IResponse<IUser[]>) => users.value = response)
+socket.value?.emit('client:get-groups', (response: IResponse<IGroup[]>) => groups.value = response)
 
 // getting current chat from router parameters
 const route = useRoute()
 
-watch(() => route, (newRoute) => {
-    // change currentChat to the selected conversation
-    currentChat.value = chats.value.data.find(chat => chat._id === newRoute.params.id)!
+function expandConversation(chatId: string) {
+    if (chatId) {
+        // remove messages that belong to the previous conversation
+        messages.value.data = []
 
-    // remove messages that belong to the previous conversation
-    messages.value.data = []
+        // change currentChat to the selected conversation
+        currentChat.value = chats.value.data?.find(chat => chat._id === chatId)
 
-    if (currentChat.value) {
-        socket.value!.emit('client:open-chat', newRoute.params.id, (response: IResponse<IChat>) => {
-            // select the particular conversation that the user chose to open
-            const selectedChat = chats.value.data.find(chat => chat._id === newRoute.params.id)!
+        // select the particular conversation that the user chose to open
+        const selectedChat = chats.value.data?.find(chat => chat._id === chatId) as IChat
 
-            // set the amount of the messages that the user haven't seen in the selected conversation to zero
-            selectedChat.unseen.find(item => item.member._id === currentUser.value!._id)!.count = 0
+        // set the amount of the messages that the user haven't seen in the selected conversation to zero
+        const unseenOfSelected = selectedChat.unseen.find(item => item.member._id === currentUser.value?._id) as IUnseen
+        unseenOfSelected.count = 0
 
-            // retrieve the messages that belong to the selected conversation
-            socket.value!.emit('client:get-messages', newRoute.params.id, (response: IResponse<IMessage[]>) => messages.value = response)
-        })
+        // set the amount of the messages that the user haven't seen in the selected conversation to zero (IN THE DATABASE)
+        socket.value?.emit('client:open-chat', chatId, (response: IResponse<IChat>) => console.log(response))
+
+        // retrieve the messages that belong to the selected conversation
+        socket.value?.emit('client:get-messages', chatId, (response: IResponse<IMessage[]>) => messages.value = response)
     }
-}, { deep: true })
+}
+
+watch(() => route.params.chatId, (newId) => {
+    if (newId && (currentChat.value?._id !== newId)) expandConversation(newId as string)
+})
 
 watch(chats, (newChats) => {
-    currentChat.value = newChats.data.find(chat => chat._id === currentChat.value?._id)!
+    currentChat.value = newChats.data?.find(chat => chat._id === currentChat.value?._id)
 }, { deep: true })
+
+expandConversation(route.params.chatId as string)
 </script>
 
 
@@ -173,7 +189,7 @@ watch(chats, (newChats) => {
     max-width: 400px;
 }
 
-#inbox .no-conversation-selected h2 {
+#inbox .no-conversation-selected .h2 {
     margin-bottom: 0.8rem;
 }
 

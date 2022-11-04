@@ -23,7 +23,7 @@
 
 
 <script setup lang='ts'>
-import {onBeforeMount, reactive, ref} from 'vue'
+import {reactive, ref} from 'vue'
 import { useRouter } from 'vue-router'
 import Joi from 'joi'
 import { socket } from '@/store/misc'
@@ -52,13 +52,6 @@ const validationSchema = Joi.object({
     link: Joi.string().min(0).max(50),
     about: Joi.string().min(0).max(100)
 })
-
-function clearProfile() {
-    currentProfile.value = {
-        data: undefined,
-        error: ''
-    }
-}
 
 function saveChanges(newLink: string, newAbout: string) {
     // clear errors

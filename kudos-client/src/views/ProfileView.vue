@@ -47,11 +47,20 @@ const props = defineProps<{
 
 const router = useRouter()
 const route = useRoute()
-const userId = props.self ? currentUser.value?._id : route.params.id
+const userId = props.self ? currentUser.value?._id : route.params.userId
 
-socket.value?.emit('client:get-user', userId, (response: IResponse<IUser>) => {
-    currentProfile.value = response
-})
+if (!currentProfile.value.data || (currentProfile.value.data._id !== userId)) {
+    // remove the previously displayed user information
+    currentProfile.value = {
+        data: undefined,
+        error: ''
+    }
+
+    // retrieve new user information
+    socket.value?.emit('client:get-user', userId, (response: IResponse<IUser>) => {
+        currentProfile.value = response
+    })
+}
 
 const statusLabel = computed(() => {
     if (!currentProfile.value.data) return ''
@@ -59,13 +68,6 @@ const statusLabel = computed(() => {
     if (calcTime(currentProfile.value.data.updatedAt) === 'Now') return 'seen just now'
     return `seen ${calcTime(currentProfile.value.data.updatedAt)} ago`
 })
-
-function clearProfile() {
-    currentProfile.value = {
-        data: undefined,
-        error: ''
-    }
-}
 
 function logOut() {
     // remove json web token from local storage

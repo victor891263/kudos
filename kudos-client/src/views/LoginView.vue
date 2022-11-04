@@ -1,4 +1,5 @@
 <template>
+    <span id='floating-logo'>Kudos</span>
     <div id='authentication'>
         <div v-if="operation.error" class='error-on-server'>
             <span>✖</span>
@@ -21,6 +22,7 @@
         </div>
         <ButtonWithSpinner :handleClick="() => submit()" :isLoading="operation.running" label="Login" />
     </div>
+    <span id='copyright'>© 2022 Kudos. All rights reserved.</span>
 </template>
 
 

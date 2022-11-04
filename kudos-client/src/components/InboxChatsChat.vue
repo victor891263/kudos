@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{ name: 'conversation', params: { id: chat._id } }" :class="{ active: isCurrentChat }" class='each-chat'>
+    <router-link :to="{ name: 'conversation', params: { chatId: chat._id } }" :class="{ active: isCurrentChat }" class='each-chat'>
         <img v-if="recipient.img" :src="recipient.img" class='anonymous' />
         <AnonymousComponent v-else :is-group="recipient.isGroup" class='anonymous' />
         <div class='text'>

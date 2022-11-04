@@ -30,7 +30,7 @@ import useSocketOperation from '@/utilities/useSocketOperation'
 import IChat from '@/types/chat'
 
 const route = useRoute()
-const groupId = route.params.id
+const groupId = route.params.groupId
 
 const group = ref<IChat>(chats.value.data.find(chat => chat._id === groupId)!)
 

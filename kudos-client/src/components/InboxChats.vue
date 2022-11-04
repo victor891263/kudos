@@ -1,23 +1,23 @@
 <template>
-    <div v-if="chats.data" id='all-chats-container'>
-        <div v-if="chats.data?.length > 0">
-            <div v-if="filteredChats.length > 0" id='all-chats'>
-                <InboxChatsChat v-for="chat in filteredChats" :chat="chat" v-bind:key="chat._id" />
+    <div id='all-chats-container'>
+        <template v-if="chats.data">
+            <template v-if="chats.data?.length > 0">
+                <div v-if="filteredChats.length > 0" id='all-chats'>
+                    <InboxChatsChat v-for="chat in filteredChats" :chat="chat" v-bind:key="chat._id" />
+                </div>
+                <span v-else class='h2'>No chats found</span>
+            </template>
+            <div v-else>
+                <span class='h2'>No chats yet</span>
+                <p>Send a message or create a group to start engaging</p>
             </div>
-            <div v-else id="chats-no-search-results">
-                <h2>No chats found</h2>
-            </div>
+        </template>
+        <div v-else-if="chats.error">
+            <span class='h2'>Error</span>
+            <p>Failed to retrieve chats. Reason: {{ chats.error }}</p>
         </div>
-        <div v-else id="chats-none">
-            <h2>No chats yet</h2>
-            <p>Send a message or create a group to start engaging</p>
-        </div>
+        <span v-else class='h2'>Loading chats...</span>
     </div>
-    <div v-else-if="chats.error" id='chats-error'>
-        <h2>Error</h2>
-        <p>Failed to retrieve chats. Reason: {{ chats.error }}</p>
-    </div>
-    <span v-else id='chats-loading'>Loading chats...</span>
 </template>
 
 <script setup lang='ts'>
@@ -41,29 +41,19 @@ const filteredChats = computed(() => {
 <style>
 #all-chats-container {
     overflow-x: hidden;
-}
-
-#all-chats {
     overflow-y: auto;
 }
 
-#all-chats::-webkit-scrollbar {
+#all-chats-container::-webkit-scrollbar {
     width: 0;
 }
 
-#chats-error, #chats-none, #chats-no-search-results {
+#all-chats-container > *:not(#all-chats) {
     margin: auto;
     padding: 1rem;
 }
 
-#chats-error h2, #chats-none h2 {
-    margin-bottom: 0.8rem;
-}
-
-#chats-loading {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: auto;
-    padding: 1rem;
+#all-chats-container .h2 + p {
+    margin-top: 0.8rem;
 }
 </style>
