@@ -18,6 +18,7 @@
 <style>
 #floating-logo {
     color: var(--violet-50) !important;
+    font-size: var(--font-size-home);
     font-weight: 800;
 
     position: absolute;
@@ -37,7 +38,7 @@
 }
 
 #home-page p {
-    font-size: calc(var(--font-size) + 1px);
+    font-size: calc(var(--font-size-home) + 1px);
 }
 
 #home-page .buttons {
@@ -52,6 +53,7 @@
 }
 
 #home-page button a {
+    font-size: var(--font-size-home);
     font-weight: 600;
     padding: 0.6rem;
     width: 100%;
@@ -68,15 +70,9 @@
 #copyright {
     align-self: center;
     color: var(--gray-50) !important;
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: calc(var(--font-size-home) * 0.9);
 
     position: absolute;
     bottom: 1rem;
-}
-
-@media (min-width: 768px) {
-    :root {
-        --font-size: 16px;
-    }
 }
 </style>

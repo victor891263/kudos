@@ -119,15 +119,21 @@ function expandConversation(chatId: string) {
 }
 
 watch([() => route.name, () => route.params.chatId], ([newName, newId]) => {
+    console.log('route watcher ran')
     if (newId && (currentChat.value?._id !== newId)) expandConversation(newId as string)
     if (newName === 'inbox') currentChat.value = undefined
 })
 
-watch(chats, (newChats) => {
-    currentChat.value = newChats.data?.find(chat => chat._id === currentChat.value?._id)
+watch(chats, (newChats, oldChats) => {
+    if (newChats.data && !oldChats.data) expandConversation(route.params.chatId as string)
+    if (currentChat.value) currentChat.value = newChats.data?.find(chat => chat._id === currentChat.value?._id)
 }, { deep: true })
 
+/*
 expandConversation(route.params.chatId as string)
+
+ */
+console.log('view mounted')
 </script>
 
 
@@ -159,7 +165,7 @@ expandConversation(route.params.chatId as string)
 
 #inbox .new-buttons {
     flex-direction: row;
-    gap: 1rem;
+    gap: 1.1rem;
 }
 
 #inbox .new-buttons svg {
@@ -168,7 +174,7 @@ expandConversation(route.params.chatId as string)
 }
 
 #inbox .search {
-    margin-top: 0.8rem;
+    margin-top: 1rem;
 }
 
 #inbox .chat-count {

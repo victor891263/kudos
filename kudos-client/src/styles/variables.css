@@ -1,5 +1,6 @@
 :root {
-    --font-size: 15px;
+    --font-size: 14px;
+    --font-size-home: 15px;
 
     --white: rgb(255, 255, 255);
 
@@ -31,8 +32,14 @@
     --red-100: rgb(61, 25, 25);
 }
 
-@media (max-width: 540px) {
+@media (min-width: 540px) {
     :root {
-        --font-size: 14px;
+        --font-size: 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        --font-size-home: 16px;
     }
 }

@@ -1,14 +1,16 @@
 <template>
-    <div v-if="messages.data.length > 0" id='all-messages'>
-        <span v-for="message in messages.data" :class="{ self: checkMsgSender(message._id) }" v-bind:key="message._id" >{{ message.body }}</span>
-        <span class='last-interaction'>{{ lastMsgTime }}</span>
-        <div ref="msgAnchor" class='messages-anchor'/>
+    <div id='all-messages'>
+        <div v-if="messages.data.length > 0" class='data-present'>
+            <span v-for="message in messages.data" :class="{ self: checkMsgSender(message._id), other: !checkMsgSender(message._id), item: true }" v-bind:key="message._id" >{{ message.body }}</span>
+            <span class='last-interaction'>{{ lastMsgTime }}</span>
+            <div ref="msgAnchor" class='messages-anchor'/>
+        </div>
+        <div v-else-if="messages.error" class='error-present'>
+            <span class='h2'>Error</span>
+            <p>Failed to retrieve chats. Reason: {{ messages.error }}</p>
+        </div>
+        <span v-else class='still-loading h2'>Loading messages...</span>
     </div>
-    <div v-else-if="messages.error" id='all-messages-error'>
-        <h2>Error</h2>
-        <p>Failed to retrieve chats. Reason: {{ messages.error }}</p>
-    </div>
-    <span v-else id='all-messages-loading'>Loading messages...</span>
 </template>
 
 <script setup lang='ts'>
@@ -33,61 +35,71 @@ watchEffect(() => {
 </script>
 
 <style>
-#all-messages-error {
+#all-messages .error-present {
     margin: auto;
     padding: 1rem;
 }
 
-#all-messages-error h2 {
+#all-messages .error-present .h2 {
     margin-bottom: 0.8rem;
 }
 
-#all-messages-loading {
-    font-size: 1.4rem;
-    font-weight: 700;
+#all-messages .still-loading {
     margin: auto;
 }
 
 #all-messages {
-    gap: 0.5rem;
     overflow-y: auto;
-    padding: 0 1rem;
 }
 
 #all-messages::-webkit-scrollbar {
     width: 0;
 }
 
-#all-messages span:first-of-type {
+#all-messages .data-present {
+    gap: 0.5rem;
     margin-top: auto;
+    padding: 0 1rem;
 }
 
-#all-messages span {
-    background-color: var(--gray-70);
+#all-messages .data-present .item {
     border-radius: 0.6rem;
+    max-width: 70%;
     padding: 0.5rem 0.8rem;
     width: fit-content;
+    word-break: break-all;
 }
 
-#all-messages span.self {
+#all-messages .data-present .item.other {
+    background-color: var(--gray-70);
+}
+
+#all-messages .data-present .item.self {
     align-self: flex-end;
     background-color: var(--violet-50);
-    color: var(--white);
+    color: var(--gray-10);
 }
 
-#all-messages .last-interaction {
-    background: none;
+#all-messages .data-present .item.other + .item.self {
+    margin-top: 0.5rem;
+}
+
+#all-messages .data-present .item.self + .item.other {
+    margin-top: 0.5rem;
+}
+
+#all-messages .data-present .last-interaction {
     color: var(--gray-50);
     font-size: 0.8rem;
     margin-top: -0.3rem;
     padding: 0;
 }
 
-#all-messages span.self + .last-interaction {
+#all-messages .data-present span.self + .last-interaction {
     align-self: flex-end;
 }
 
-#all-messages .messages-anchor {
+#all-messages .data-present .messages-anchor {
     margin-top: -0.5rem;
     visibility: hidden;
 }

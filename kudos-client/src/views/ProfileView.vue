@@ -18,7 +18,7 @@
             </div>
             <p v-if="currentProfile.data?.about">{{ currentProfile.data?.about }}</p>
             <div v-if="self" class='edit-buttons'>
-                <router-link :to="{ name: 'editProfile' }"><button class='one'>Edit profile</button></router-link>
+                <router-link :to="{ name: 'editProfile' }"><button class='one'>Edit account</button></router-link>
                 <button @click="logOut" class='two'>Log out</button>
             </div>
         </div>

@@ -5,7 +5,7 @@
                 <span>✖</span>
                 <p>Failed to save changes. Reason: {{ operation.error }}</p>
             </div>
-            <h2>Edit profile</h2>
+            <h2>Edit account</h2>
             <div>
                 <label>Social media link</label>
                 <input v-model="link" type='text' placeholder="(optional)" class='text-input'/>
@@ -68,7 +68,16 @@ function saveChanges(newLink: string, newAbout: string) {
     if (!error) {
         useSocketOperation((onError) => {
             socket.value?.emit('client:edit-user', currentProfile.value.data?._id, { link: newLink, about: newAbout }, onError)
-        }, () => router.push({ name: 'inbox' }), operation)
+        }, () => {
+            // remove the previously displayed user information
+            currentProfile.value = {
+                data: undefined,
+                error: ''
+            }
+
+            // redirect user back to account page
+            router.push({name: 'account'})
+        }, operation)
     }
 }
 </script>

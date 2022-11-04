@@ -16,11 +16,13 @@
 }
 
 #authentication .subtitle span {
+    font-size: var(--font-size-home);
     margin-right: 0.3em;
 }
 
 #authentication input {
     border-radius: 0.6rem;
+    font-size: var(--font-size-home);
     padding: 0.6rem 0.8rem;
 }
 
@@ -44,16 +46,18 @@
 
 #floating-logo {
     color: var(--violet-50) !important;
+    font-size: var(--font-size-home);
     font-weight: 800;
 
     position: absolute;
     top: 1rem;
     left: 1rem;
 }
+
 #copyright {
     align-self: center;
     color: var(--gray-50) !important;
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: calc(var(--font-size-home) * 0.9);
 
     position: absolute;
     bottom: 1rem;
