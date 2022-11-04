@@ -35,13 +35,13 @@ a {
 
 input[type='text'], input[type='password'], textarea {
     background-color: var(--gray-80);
-    border: 2px solid transparent;
-    outline: none;
-    transition: border-color 0.15s;
+    border: none;
+    outline: 2px solid transparent;
+    transition: outline-color 0.15s;
 }
 
 input[type='text']:focus, input[type='password']:focus, textarea:focus {
-    border-color: var(--violet-50);
+    outline-color: var(--violet-50);
 }
 
 input[type='text']::placeholder, input[type='password']::placeholder, textarea::placeholder {

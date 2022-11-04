@@ -37,21 +37,22 @@ function sendMsg(message: string, chatId: string) {
 #reply-box > div {
     align-items: center;
     background-color: var(--gray-70) !important;
-    border: 2px solid transparent;
     border-radius: 0.7rem;
     flex-direction: row;
-    transition: border-color 0.15s;
+    outline: 2px solid transparent;
+    transition: outline-color 0.15s;
 }
 
 #reply-box > div:focus-within {
-    border-color: var(--violet-50);
+    outline-color: var(--violet-50);
 }
 
 #reply-box input {
     background-color: transparent;
     border: none;
     font-weight: 500;
-    padding: 0.6rem 0.8rem;
+    outline: none;
+    padding: 0.7rem 0.9rem;
     width: 100%;
 }
 

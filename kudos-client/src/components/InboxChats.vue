@@ -1,7 +1,7 @@
 <template>
-    <div v-if="chats.data">
+    <div v-if="chats.data" id='all-chats-container'>
         <div v-if="chats.data?.length > 0">
-            <div v-if="filteredChats?.length > 0" id='all-chats'>
+            <div v-if="filteredChats.length > 0" id='all-chats'>
                 <InboxChatsChat v-for="chat in filteredChats" :chat="chat" v-bind:key="chat._id" />
             </div>
             <div v-else id="chats-no-search-results">
@@ -34,11 +34,15 @@ const filteredChats = computed(() => {
     if (chats.value.data) {
         return chats.value.data.filter(chat => chat.members.find(member => member.name.includes(props.filterKeyword) && (member.name !== currentUser.value?.name)))
     }
-    return null
+    return []
 })
 </script>
 
 <style>
+#all-chats-container {
+    overflow-x: hidden;
+}
+
 #all-chats {
     overflow-y: auto;
 }
