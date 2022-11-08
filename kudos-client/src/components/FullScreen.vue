@@ -43,7 +43,7 @@ function onPress() {
 
 .full-screen-box .back-button svg {
     fill: var(--gray-50);
-    height: 0.9rem;
+    height: 0.8rem;
     transform: rotate(180deg);
 }
 </style>

@@ -52,7 +52,7 @@ function sendMsg(message: string, chatId: string) {
     border: none;
     font-weight: 500;
     outline: none;
-    padding: 0.6rem 0.8rem;
+    padding: 0.6rem 0.7rem;
     width: 100%;
 }
 
@@ -65,7 +65,7 @@ function sendMsg(message: string, chatId: string) {
     cursor: pointer;
     fill: var(--violet-50);
     flex-shrink: 0;
-    height: 0.9rem;
+    height: 0.8rem;
     margin-right: 0.8rem;
 }
 

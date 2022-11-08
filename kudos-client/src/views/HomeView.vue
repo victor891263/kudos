@@ -1,7 +1,7 @@
 <template>
     <span id='floating-logo'>Kudos</span>
     <div id='home-page'>
-        <h1>Connect easily with anyone, any time</h1>
+        <h1>Connect effortlessly with anyone, any time</h1>
         <p>Kudos is an online chat application that allows strangers to connect each other or create chat groups to have a conversation with like-minded individuals.</p>
         <div class='buttons'>
             <button class='one'>
@@ -18,7 +18,6 @@
 <style>
 #floating-logo {
     color: var(--violet-50) !important;
-    font-size: var(--font-size-home);
     font-weight: 800;
 
     position: absolute;
@@ -38,7 +37,7 @@
 }
 
 #home-page p {
-    font-size: calc(var(--font-size-home) + 1px);
+    font-size: calc(1rem + 1px);
 }
 
 #home-page .buttons {
@@ -53,7 +52,6 @@
 }
 
 #home-page button a {
-    font-size: var(--font-size-home);
     font-weight: 600;
     padding: 0.6rem;
     width: 100%;
@@ -70,9 +68,19 @@
 #copyright {
     align-self: center;
     color: var(--gray-50) !important;
-    font-size: calc(var(--font-size-home) * 0.9);
+    font-size: 0.9rem;
 
     position: absolute;
     bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    #home-page p {
+        font-size: calc(1rem + 2px);
+    }
+
+    #home-page button a {
+        font-size: calc(1rem + 1px);
+    }
 }
 </style>

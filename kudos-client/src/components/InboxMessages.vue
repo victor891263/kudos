@@ -1,7 +1,7 @@
 <template>
     <div id='all-messages'>
         <div v-if="messages.data.length > 0" class='data-present'>
-            <span v-for="message in messages.data" :class="{ self: checkMsgSender(message._id), other: !checkMsgSender(message._id), item: true }" v-bind:key="message._id" >{{ message.body }}</span>
+            <p v-for="message in messages.data" :class="{ self: checkMsgSender(message._id), other: !checkMsgSender(message._id), item: true }" v-bind:key="message._id" >{{ message.body }}</p>
             <span class='last-interaction'>{{ lastMsgTime }}</span>
             <div ref="msgAnchor" class='messages-anchor'/>
         </div>
@@ -65,7 +65,7 @@ watchEffect(() => {
 #all-messages .data-present .item {
     border-radius: 0.6rem;
     max-width: 70%;
-    padding: 0.5rem 0.8rem;
+    padding: 0.4rem 0.8rem;
     width: fit-content;
     word-break: break-all;
 }
@@ -90,12 +90,12 @@ watchEffect(() => {
 
 #all-messages .data-present .last-interaction {
     color: var(--gray-50);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-top: -0.3rem;
     padding: 0;
 }
 
-#all-messages .data-present span.self + .last-interaction {
+#all-messages .data-present .item.self + .last-interaction {
     align-self: flex-end;
 }
 

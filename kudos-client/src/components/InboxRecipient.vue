@@ -61,7 +61,7 @@ onBeforeMount(() => {
 }
 
 #recipient .text {
-    gap: 0.1rem;
+    gap: 0.3rem;
     margin-left: 0.6rem;
 }
 

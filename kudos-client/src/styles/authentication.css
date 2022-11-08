@@ -16,13 +16,11 @@
 }
 
 #authentication .subtitle span {
-    font-size: var(--font-size-home);
     margin-right: 0.3em;
 }
 
 #authentication input {
     border-radius: 0.6rem;
-    font-size: var(--font-size-home);
     padding: 0.6rem 0.8rem;
 }
 
@@ -46,7 +44,6 @@
 
 #floating-logo {
     color: var(--violet-50) !important;
-    font-size: var(--font-size-home);
     font-weight: 800;
 
     position: absolute;
@@ -57,8 +54,16 @@
 #copyright {
     align-self: center;
     color: var(--gray-50) !important;
-    font-size: calc(var(--font-size-home) * 0.9);
+    font-size: 0.9rem;
 
     position: absolute;
     bottom: 1rem;
+}
+
+
+
+@media (min-width: 768px) {
+    #authentication .subtitle *, #authentication input, #authentication button span {
+        font-size: calc(1rem + 1px);
+    }
 }
