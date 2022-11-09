@@ -31,7 +31,7 @@ const emits = defineEmits(['update:modelValue'])
 }
 
 #search-box input {
-    border-radius: 0.7rem;
+    border-radius: 0.6rem;
     font-weight: 500;
     padding: 0.6rem 0.6rem 0.6rem 2.3rem;
 }

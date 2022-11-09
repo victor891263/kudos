@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang='ts'>
+/*
 import {onMounted} from 'vue'
 
 onMounted(() => {
@@ -10,6 +11,7 @@ onMounted(() => {
         document.getElementsByTagName('html')[0].style.fontSize = '15px'
     }
 })
+*/
 </script>
 
 <style>
@@ -24,7 +26,7 @@ onMounted(() => {
 }
 
 #app * {
-  font-family: 'GT Walsheim', sans-serif;
+  font-family: 'din round', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

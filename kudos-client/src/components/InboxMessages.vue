@@ -63,7 +63,7 @@ watchEffect(() => {
 }
 
 #all-messages .data-present .item {
-    border-radius: 0.6rem;
+    border-radius: 0.5rem;
     max-width: 70%;
     padding: 0.4rem 0.8rem;
     width: fit-content;

@@ -19,7 +19,7 @@
 }
 
 .new-window .msg-targets > span {
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: 0.9rem;
     padding-left: 0.2rem;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .new-window .msg-targets > div > button span {
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: 0.9rem;
     margin-left: 0.4rem;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .new-window .removable-target span {
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: 0.9rem;
 }
 
 .new-window .removable-target .cross {

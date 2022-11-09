@@ -61,7 +61,7 @@ const isSentByMe = computed(() => props.chat.lastMsg.sentBy._id === currentUser.
 }
 
 #all-chats .each-chat .text {
-    gap: 0.5rem;
+    gap: 0.2rem;
     margin-left: 0.7rem;
     overflow: hidden;
     width: 100%;

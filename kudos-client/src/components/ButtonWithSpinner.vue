@@ -22,11 +22,12 @@ const props = defineProps<{
 }
 
 .button-with-spinner span {
-    color: var(--white) !important;
+    color: var(--gray-10) !important;
+    font-weight: 600;
 }
 
 .button-with-spinner .spinner {
-    border-color: var(--white);
+    border-color: var(--gray-10);
     height: 1.4rem;
     width: 1.4rem;
 

@@ -37,7 +37,7 @@
 }
 
 #home-page p {
-    font-size: calc(1rem + 1px);
+    font-size: 1.1rem;
 }
 
 #home-page .buttons {
@@ -76,11 +76,11 @@
 
 @media (min-width: 768px) {
     #home-page p {
-        font-size: calc(1rem + 2px);
+        font-size: 1.2rem;
     }
 
     #home-page button a {
-        font-size: calc(1rem + 1px);
+        font-size: 1.1rem;
     }
 }
 </style>

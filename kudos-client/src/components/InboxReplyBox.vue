@@ -38,7 +38,7 @@ function sendMsg(message: string, chatId: string) {
     align-items: center;
     background-color: var(--gray-70) !important;
     border: 2px solid transparent;
-    border-radius: 0.7rem;
+    border-radius: 0.6rem;
     flex-direction: row;
     transition: border-color 0.15s;
 }

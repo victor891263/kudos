@@ -158,7 +158,7 @@ watch(chats, (newChats, oldChats) => {
 
 #inbox .new-buttons {
     flex-direction: row;
-    gap: 1rem;
+    gap: 1.1rem;
 }
 
 #inbox .new-buttons svg {
@@ -172,7 +172,7 @@ watch(chats, (newChats, oldChats) => {
 
 #inbox .chat-count {
     color: var(--gray-50);
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: 0.9rem;
     padding: 0.6rem 1rem;
 }
 

@@ -61,7 +61,7 @@ onBeforeMount(() => {
 }
 
 #recipient .text {
-    gap: 0.3rem;
+    gap: 0.2rem;
     margin-left: 0.6rem;
 }
 
@@ -80,7 +80,7 @@ onBeforeMount(() => {
     background-color: var(--red-60);
     border-radius: 50%;
     height: 0.55rem;
-    margin-top: 0.1rem;
+    margin-top: 0.2rem;
     width: 0.55rem;
 }
 
@@ -89,7 +89,7 @@ onBeforeMount(() => {
 }
 
 #recipient .connection-status span {
-    font-size: calc(var(--font-size) * 0.9);
+    font-size: 0.9rem;
 }
 
 #recipient .back-button {
