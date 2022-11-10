@@ -26,7 +26,7 @@ onMounted(() => {
 }
 
 #app * {
-  font-family: 'din round', sans-serif;
+  font-family: 'gt walsheim', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

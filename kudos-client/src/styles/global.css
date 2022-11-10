@@ -1,32 +1,26 @@
 @font-face {
-    font-family: 'din round';
+    font-family: 'gt walsheim';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/ff-din-round-light.otf');
+    src: url('../fonts/gt-walsheim-light.woff2');
 }
 @font-face {
-    font-family: 'din round';
+    font-family: 'gt walsheim';
     font-style: normal;
     font-weight: 500;
-    src: url('../fonts/ff-din-round-regular.otf');
+    src: url('../fonts/gt-walsheim-regular.woff2');
 }
 @font-face {
-    font-family: 'din round';
+    font-family: 'gt walsheim';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/ff-din-round-medium.otf');
+    src: url('../fonts/gt-walsheim-medium.woff2');
 }
 @font-face {
-    font-family: 'din round';
+    font-family: 'gt walsheim';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/ff-din-round-bold.otf');
-}
-@font-face {
-    font-family: 'din round';
-    font-style: normal;
-    font-weight: 800;
-    src: url('../fonts/ff-din-round-black.otf');
+    src: url('../fonts/gt-walsheim-bold.woff2');
 }
 
 @import 'variables.css';
