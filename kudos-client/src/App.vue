@@ -21,12 +21,12 @@ onMounted(() => {
 }
 
 #app {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100%;
 }
 
 #app * {
-  font-family: 'gt walsheim', sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

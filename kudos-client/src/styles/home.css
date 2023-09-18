@@ -1,0 +1,405 @@
+
+/* HEADER */
+
+header {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: min(100%, 1280px);
+}
+
+header > div {
+    align-items: center;
+    border-bottom: 1px solid var(--gray-60);
+    flex-direction: row !important;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
+}
+
+header .links {
+    flex-direction: row !important;
+    gap: 1.5rem;
+}
+
+header div, header a {
+    font-size: 0.875rem;
+}
+
+/* MAIN PAGE */
+
+#home-page {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10rem 1rem 6rem;
+    width: min(100%, 1280px);
+}
+
+#home-page > div:not(:first-of-type) {
+    margin-top: 10rem;
+}
+
+#home-page .hero {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 640px;
+    text-align: center;
+}
+
+#home-page .hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+#home-page .hero p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+}
+
+#home-page .hero .buttons {
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+}
+
+#home-page button.one a {
+    color: var(--gray-10) !important;
+}
+
+#home-page button.two a {
+    color: var(--violet-50) !important;
+}
+
+#home-page .hero .buttons button {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+}
+
+/* SECTION WITH IMAGES */
+
+#home-page .section-with-image .with-image:not(:first-of-type) {
+    margin-top: 6rem;
+}
+
+#home-page .with-image {
+    align-items: center;
+    display: grid !important;
+    width: 100%;
+}
+
+#home-page .with-image > div {
+    justify-self: center;
+    max-width: 480px;
+}
+
+#home-page .with-image .subtitle {
+    color: var(--violet-40);
+    text-transform: uppercase;
+}
+
+#home-page .with-image h2 {
+    font-size: 1.875rem;
+    line-height: 1.3;
+    margin-top: 1rem;
+}
+
+#home-page .with-image p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+#home-page .with-image img {
+    border-radius: 1rem;
+    justify-self: center;
+}
+
+/* FEATURES SECTION */
+
+#home-page .features-section {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+}
+
+#home-page .features-section .heading {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 540px;
+    text-align: center;
+}
+
+#home-page .features-section .heading h2 {
+    font-size: 1.875rem;
+    line-height: 1.3;
+}
+
+#home-page .features-section .heading p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+#home-page .features-section .features {
+    column-gap: 2.5rem;
+    display: grid !important;
+    margin-top: 3.5rem;
+    row-gap: 2rem;
+}
+
+#home-page .features-section .features > div {
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#home-page .features-section .features svg {
+    flex-shrink: 0;
+    stroke: var(--violet-40);
+    stroke-width: 0.15rem;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+#home-page .features-section .features h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+}
+
+#home-page .features-section .features p {
+    line-height: 1.6;
+}
+
+/* FAQ SECTION */
+
+#home-page .faq-section .faq-opener:checked ~ p {
+    display: block;
+}
+
+#home-page .faq-section .heading {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 540px;
+    text-align: center;
+}
+
+#home-page .faq-section .heading h2 {
+    font-size: 1.875rem;
+    line-height: 1.3;
+}
+
+#home-page .faq-section .heading p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+#home-page .faq-section .questions {
+    display: grid !important;
+    grid-gap: 1.25rem;
+    margin-top: 3.5rem;
+}
+
+#home-page .faq-section .questions input {
+    display: none;
+}
+
+#home-page .faq-section .questions .question {
+    border: 1px solid var(--gray-60);
+    border-radius: 0.5rem;
+    display: block;
+    padding: 1.5rem;
+}
+
+#home-page .faq-section .questions .question > div {
+    align-items: center;
+    flex-direction: row;
+}
+
+#home-page .faq-section .questions label {
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-right: 1.25rem;
+    padding: 0.5rem;
+}
+
+#home-page .faq-section .questions h3 {
+    font-size: 1.125rem;
+}
+
+#home-page .faq-section .questions svg {
+    height: 1rem;
+    stroke: var(--white);
+    stroke-width: 0.2rem;
+    width: 1rem;
+}
+
+#home-page .faq-section .questions p {
+    display: none;
+    line-height: 1.65;
+    margin-top: 0.75rem;
+    padding-left: 3.25rem;
+}
+
+/* CALL TO ACTION SECTION */
+
+#home-page .cta-section {
+    align-items: center;
+    background-color: var(--violet-50);
+    border-radius: 1rem;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+#home-page .cta-section .content {
+    max-width: 400px;
+}
+
+#home-page .cta-section h2 {
+    color: var(--white);
+    font-size: 1.875rem;
+}
+
+#home-page .cta-section p {
+    color: var(--white);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-top: 0.75rem;
+}
+
+#home-page .cta-section .links {
+    gap: 0.5rem;
+}
+
+#home-page .cta-section .links a:first-of-type {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    color: var(--violet-50) !important;
+    padding: 0.75rem 1rem;
+}
+
+#home-page .cta-section .links a:last-of-type {
+    border: 1px solid var(--white);
+    border-radius: 0.5rem;
+    color: var(--white) !important;
+    padding: 0.75rem 1rem;
+}
+
+/* FOOTER */
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: min(100%, 1280px);
+}
+
+footer > div {
+    align-items: center;
+    border-top: 1px solid var(--gray-60);
+    flex-direction: row !important;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
+}
+
+footer div {
+    font-size: 0.875rem;
+}
+
+footer svg {
+    fill: var(--white);
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+/* RESPONSIVE */
+
+@media (min-width: 1024px) {
+    header {
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;
+    }
+
+    #home-page {
+        padding: 10rem 4rem 6rem !important;
+    }
+
+    footer {
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;
+    }
+
+    #home-page .with-image {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #home-page .faq-section .questions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1023px) {
+    #home-page .with-image img {
+        margin-top: 2rem;
+        width: min(480px, 100%);
+    }
+
+    #home-page .with-image.second img {
+        order: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    #home-page {
+        padding: 10rem 2rem 6rem;
+    }
+
+    footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 640px) {
+    #home-page .features-section .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #home-page .cta-section {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 639px) {
+    #home-page > div:not(:first-of-type) {
+        margin-top: 8rem;
+    }
+
+    #home-page .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #home-page .cta-section {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    #home-page .cta-section .links {
+        margin-top: 1.75rem;
+        flex-direction: row;
+    }
+}
+
+
+
