@@ -43,18 +43,18 @@ header div, header a {
 #home-page .hero {
     margin-left: auto;
     margin-right: auto;
-    max-width: 640px;
+    max-width: 560px;
     text-align: center;
 }
 
 #home-page .hero h1 {
     font-size: 3rem;
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
 #home-page .hero p {
     font-size: 1.25rem;
-    line-height: 1.6;
+    line-height: 1.5;
     margin-top: 1.5rem;
 }
 
@@ -110,7 +110,7 @@ header div, header a {
 
 #home-page .with-image p {
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 1.5;
     margin-top: 1rem;
 }
 
@@ -130,7 +130,7 @@ header div, header a {
 #home-page .features-section .heading {
     margin-left: auto;
     margin-right: auto;
-    max-width: 540px;
+    max-width: 480px;
     text-align: center;
 }
 
@@ -141,7 +141,7 @@ header div, header a {
 
 #home-page .features-section .heading p {
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 1.5;
     margin-top: 1rem;
 }
 
@@ -149,7 +149,7 @@ header div, header a {
     column-gap: 2.5rem;
     display: grid !important;
     margin-top: 3.5rem;
-    row-gap: 2rem;
+    row-gap: 2.25rem;
 }
 
 #home-page .features-section .features > div {
@@ -167,11 +167,11 @@ header div, header a {
 
 #home-page .features-section .features h3 {
     font-size: 1.125rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.875rem;
 }
 
 #home-page .features-section .features p {
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* FAQ SECTION */
@@ -194,7 +194,7 @@ header div, header a {
 
 #home-page .faq-section .heading p {
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 1.5;
     margin-top: 1rem;
 }
 
@@ -212,6 +212,7 @@ header div, header a {
     border: 1px solid var(--gray-60);
     border-radius: 0.5rem;
     display: block;
+    height: fit-content;
     padding: 1.5rem;
 }
 
@@ -232,15 +233,15 @@ header div, header a {
 }
 
 #home-page .faq-section .questions svg {
-    height: 1rem;
+    height: 1.125rem;
     stroke: var(--white);
     stroke-width: 0.2rem;
-    width: 1rem;
+    width: 1.125rem;
 }
 
 #home-page .faq-section .questions p {
     display: none;
-    line-height: 1.65;
+    line-height: 1.5;
     margin-top: 0.75rem;
     padding-left: 3.25rem;
 }
@@ -267,7 +268,7 @@ header div, header a {
 #home-page .cta-section p {
     color: var(--white);
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 1.5;
     margin-top: 0.75rem;
 }
 
