@@ -28,5 +28,5 @@ jobs:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KUDOS_CACA8 }}'
         projectId: kudos-caca8
-        entryPoint: './kudos-client'
-        channelId: 'cid-${{ github.repository }}-${{ github.sha }}'
+        entryPoint: ./kudos-client
+        channelId: live
